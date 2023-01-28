@@ -1,13 +1,13 @@
 var accordion = function () {
     var data = $(".accordion").attr("data_accordion");
 
-    $(".accordion_header").on("click", function() {
+    $(".accordion_header").on("click", function () {
         if (data = "close") {
             $(".accordion_body").slideUp();
-            if ($(this).hasClass("active")){
+            if ($(this).hasClass("active")) {
                 $(this).toggleClass("active");
             }
-            else{
+            else {
                 $(".accordion_header").removeClass("active");
                 $(this).toggleClass("active");
             }
@@ -21,9 +21,17 @@ var accordion = function () {
 
 accordion();
 
-$(document).ready(function() {
-    $('.burger_bg').click(function(event) {
+$(document).ready(function () {
+    $('.burger_bg').click(function (event) {
         $('.burger,.nav').toggleClass('active');
         $('body').toggleClass('lock');
     })
+})
+
+//! ---------------------------------------------------------------------------------------------------------------
+
+let menuBtn = document.querySelector('.burger');
+let menu = document.querySelector('.navbar');
+menuBtn.addEventListener('click', function(){
+	menu.classList.toggle('active');
 })

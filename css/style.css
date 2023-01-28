@@ -61,6 +61,7 @@
     font-weight: bold;
     position: relative;
     z-index: 5;
+    cursor: default;
 
 }
 
@@ -75,9 +76,9 @@ button {
 
 }
 
-html, body {
+html,
+body {
     height: 100%;
-    background: rgb(182, 171, 171);
     cursor: default;
     font-family: sans-serif;
 }
@@ -99,7 +100,7 @@ p {
     top: 0;
     left: 0;
     position: fixed;
-    
+
 }
 
 .header::before {
@@ -261,7 +262,9 @@ i {
 }
 
 /* Change color of dropdown links on hover */
-a:hover {background-color: rgba(221, 221, 221, 0);}
+a:hover {
+    background-color: rgba(221, 221, 221, 0);
+}
 
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
@@ -277,7 +280,7 @@ a:hover {background-color: rgba(221, 221, 221, 0);}
     background: rgb(184, 174, 174);
 }
 
-.burger, 
+.burger,
 .burger_bg {
     position: relative;
     z-index: 3;
@@ -309,17 +312,17 @@ a:hover {background-color: rgba(221, 221, 221, 0);}
         padding: 2px;
     }
 
-    .header_logo {
-    }
+    .header_logo {}
+
     .logo {
         font-size: 18px;
         margin-right: 25px;
     }
-    
+
     .f_logo {
         font-size: 18px;
     }
-    
+
     .note_text {
         font-size: 11px;
     }
@@ -346,13 +349,16 @@ a:hover {background-color: rgba(221, 221, 221, 0);}
 /*todo Display for smartphone */
 @media (max-width:521px) {
 
-/*! Navigation items */
+    /*! Navigation items */
     .nav_c {
         font-size: 12px;
         margin: 0;
         padding: 0;
         display: none;
     }
+
+
+
     .dropdown-content a {
         color: rgb(104, 97, 97);
         padding: 12px 16px;
@@ -360,6 +366,7 @@ a:hover {background-color: rgba(221, 221, 221, 0);}
         text-decoration: none;
         display: inline-block;
     }
+
     .nav_c:hover {
         background-color: transparent;
     }
@@ -401,10 +408,11 @@ a:hover {background-color: rgba(221, 221, 221, 0);}
         display: none;
     }
 
-/*! Arrow down */
+    /*! Arrow down */
     .down {
         margin-left: 3px;
     }
+
     .ad_i {
         position: relative;
         margin-top: 4px;
@@ -415,11 +423,6 @@ a:hover {background-color: rgba(221, 221, 221, 0);}
         padding: 2px;
     }
 
-
-    .burger {
-        display: block;
-        cursor: pointer;
-    }
     .burger {
         display: block;
         flex-direction: column;
@@ -474,12 +477,15 @@ a:hover {background-color: rgba(221, 221, 221, 0);}
         margin: 0;
         font-size: 14px;
     }
+
     .f_logo {
         font-size: 14px;
     }
+
     .note_text {
         font-size: 8px;
     }
+
     .burger_and_logo {
         display: flex;
         align-items: center;
@@ -488,6 +494,7 @@ a:hover {background-color: rgba(221, 221, 221, 0);}
     .acc_i {
         font-size: 10px;
     }
+
     .burger.active::before {
         transform: rotate(45deg);
         top: 4px;
@@ -501,14 +508,10 @@ a:hover {background-color: rgba(221, 221, 221, 0);}
         transform: rotate(-45deg);
         bottom: 4px;
     }
+
     .dropdown:hover .dropdown-content {
         display: none;
     }
-    
+
 }
 
-@media (max-width:320px) {
-    .note_text{
-        font-size: 5px;
-    }
-}

@@ -1,0 +1,374 @@
+@media (max-width:320px) {
+    .note_text {
+        font-size: 5px;
+    }
+
+    .films_header {
+        text-transform: uppercase;
+        font-size: 31px;
+        font-family: sans-serif;
+        margin: 15px 0 0 0px;
+    }
+
+}
+
+.films {
+    background-color: rgba(128, 128, 128, 0.26);
+    padding: 40px 0 60px 0;
+}
+
+.series {
+    background-color: white;
+    padding: 60px 0;
+
+}
+
+.cartoons {
+    background-color: rgba(128, 128, 128, 0.26);
+    padding: 60px 0;
+}
+
+.about_text {
+    color: rgb(50, 50, 50);
+    text-transform: uppercase;
+    font-size: 31px;
+    font-family: sans-serif;
+    margin-bottom: 10px;
+}
+
+.films_header {
+    color: rgb(50, 50, 50);
+    text-transform: uppercase;
+    font-size: 31px;
+    font-family: sans-serif;
+    margin: 20px 0 40px 0;
+}
+
+.series_header {
+    color: rgb(50, 50, 50);
+    text-transform: uppercase;
+    font-size: 31px;
+    font-family: sans-serif;
+}
+
+.about_paragraph {
+    line-height: 1.4;
+    font-size: 16px;
+    font-weight: 600;
+    color: rgb(85, 84, 84);
+}
+
+/*! Arrow right */
+.mv_arrow {
+    border: solid rgb(0, 38, 255);
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 6px;
+}
+
+.right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    margin-bottom: 4px;
+    margin-left: 2px;
+}
+
+/*! Series section */
+.series_header {
+    color: rgb(50, 50, 50);
+    text-transform: uppercase;
+    font-size: 31px;
+    font-family: sans-serif;
+    margin-bottom: 40px;
+}
+
+.series_blocks {
+    gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.series_block {
+    max-width: 373px;
+}
+
+@media (max-width:189px) {
+    html {
+        width: 50vh;
+    }
+}
+
+/*! Cartoons section  */
+.cartoons_header {
+    color: rgb(50, 50, 50);
+    text-transform: uppercase;
+    font-size: 31px;
+    margin-bottom: 40px;
+    font-family: sans-serif;
+}
+
+img {
+    width: 100%;
+}
+
+/*! Slider */
+.slider {
+    width: 512px;
+    height: 300px;
+    margin: 30px auto;
+    overflow: hidden;
+}
+
+.slider_line {
+    height: 300px;
+    width: 2048px;
+    display: flex;
+    position: relative;
+    left: 0;
+    transition: all ease 1s;
+}
+
+.slider_img_block {
+    max-width: 512px;
+}
+
+.slider_prev {
+    border: none;
+    background-color: transparent;
+    font-size: 30px;
+    border-radius: 10px;
+    padding: 2.5px 18.5px 6px 18.5px;
+    color: rgb(0, 0, 0);
+    border: 2px solid rgb(0, 0, 0);
+}
+
+.slider_prev:hover {
+    color: rgb(0, 0, 0);
+    border: 2px solid rgb(0, 0, 0);
+    background-color: rgb(190, 190, 190);
+    cursor: pointer;
+}
+
+.slider_next {
+    border: none;
+    background-color: transparent;
+    font-size: 30px;
+    border-radius: 10px;
+    padding: 2.5px 18.5px 6px 18.5px;
+    color: rgb(0, 0, 0);
+    border: 2px solid rgb(0, 0, 0);
+}
+
+.slider_next:hover {
+    color: rgb(0, 0, 0);
+    border: 2px solid rgb(0, 0, 0);
+    background-color: rgb(190, 190, 190);
+    cursor: pointer;
+}
+
+/*! Films header */
+
+.film_name {
+    color: rgb(235, 235, 235);
+    text-shadow: 0px 0px 5px black;
+    font-family: sans-serif;
+    font-size: 18px;
+    letter-spacing: 2px;
+    margin: 5px 0 0 8px;
+    background-color: transparent;
+    position: absolute;
+}
+
+.cartoons_name {
+    color: rgb(255, 255, 255);
+    text-shadow: 0px 0px 5px rgb(0, 0, 0);
+    font-family: sans-serif;
+    font-size: 18px;
+    letter-spacing: 1.1px;
+    margin: 5px 0 0 8px;
+    background-color: transparent;
+    position: absolute;
+}
+
+@media (max-width:533px) {
+
+    .films {
+        background-color: rgba(128, 128, 128, 0.26);
+        padding: 20px 0 30px 0;
+    }
+
+    .series {
+        background-color: white;
+        padding: 30px 0;
+
+    }
+
+    .cartoons {
+        background-color: rgba(128, 128, 128, 0.26);
+        padding: 30px 0;
+    }
+
+
+    .about_text {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .films_header {
+        font-size: 20px;
+        letter-spacing: 1px;
+        margin: 20px 0 40px 0;
+    }
+
+    .series_header {
+        font-size: 20px;
+    }
+
+    .cartoons_header {
+        font-size: 20px;
+    }
+
+    .about_paragraph {
+        font-size: 12px;
+        line-height: 1.2;
+        font-weight: bold;
+    }
+
+    /*! Slider */
+    .slider {
+        width: auto;
+        height: auto;
+        overflow: visible;
+    }
+
+    .slider_line {
+        justify-content: center;
+        display: flex;
+        flex-wrap: wrap;
+        width: auto;
+        height: auto;
+        transition: 1s;
+    }
+
+    .slider_img_block {
+        max-width: 373px;
+        margin-bottom: 10px;
+    }
+
+    .slider_prev {
+        display: none;
+    }
+
+    .slider_next {
+        display: none;
+    }
+
+    /*! Films header */
+
+    .mv_arrow {
+        border: solid black;
+        border-width: 0 2px 2px 0;
+        display: inline-block;
+        padding: 4px;
+    }
+
+    .right {
+        transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
+        margin-bottom: 2.5px;
+        margin-left: 2px;
+    }
+
+    .cartoons_name {
+        color: rgb(255, 255, 255);
+        text-shadow: 0px 0px 5px rgb(0, 0, 0);
+        font-family: sans-serif;
+        font-size: 16px;
+        letter-spacing: 1.1px;
+        margin: 5px 0 0 8px;
+        background-color: transparent;
+        position: absolute;
+    }
+    
+    .film_name {
+        color: rgb(235, 235, 235);
+        text-shadow: 0px 0px 5px black;
+        font-family: sans-serif;
+        font-size: 16px;
+        letter-spacing: 1.1px;
+        margin: 5px 0 0 8px;
+        background-color: transparent;
+        position: absolute;
+    }
+    
+
+}
+
+.slider_prev_2 {
+    border: none;
+    background-color: transparent;
+    font-size: 30px;
+    border-radius: 10px;
+    padding: 2.5px 18.5px 6px 18.5px;
+    color: rgb(0, 0, 0);
+    border: 2px solid rgb(0, 0, 0);
+}
+
+.slider_next_2 {
+    border: none;
+    background-color: transparent;
+    font-size: 30px;
+    border-radius: 10px;
+    padding: 2.5px 18.5px 6px 18.5px;
+    color: rgb(0, 0, 0);
+    border: 2px solid rgb(0, 0, 0);
+}
+
+.slider_next_2:hover,
+.slider_prev_2:hover {
+    color: rgb(0, 0, 0);
+    border: 2px solid rgb(0, 0, 0);
+    background-color: rgb(190, 190, 190);
+    cursor: pointer;
+}
+
+p:hover {
+    cursor: pointer;
+}
+
+.slider_2 {
+    max-width: 512px;
+    margin: 20px auto;
+    overflow: hidden;
+}
+
+.slider_line_2 {
+    display: flex;
+    transition: 1s;
+
+}
+
+.slider_img_block_2 {
+    max-width: 512px;
+    max-height: 300px;
+}
+
+.last_block {
+    margin: 60px 0 0 0;
+}
+
+.last_container_header {
+    color: rgb(50, 50, 50);
+    text-transform: uppercase;
+    font-size: 31px;
+    font-family: sans-serif;
+    padding: 20px 0;
+}
+
+.last_text {
+    line-height: 1.4;
+    color: rgb(85, 84, 84);
+    padding: 8px 0;
+    font-weight: 600;
+}
