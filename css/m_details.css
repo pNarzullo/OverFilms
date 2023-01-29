@@ -21,19 +21,118 @@
 
 .movie_img {
     max-width: 450px;
-    padding: 30px 0;
 }
 
 .flexed_movie {
     display: flex;
+    padding: 30px 0;
 }
 
 .about_movie {
     display: flex;
     justify-content: space-between;
+    line-height: 2;
 }
 
 .field {
-    color: rgb(104, 99, 99);
+    font-size: 15px;
+    color: rgb(138, 132, 132);
     font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.value {
+    font-size: 14px;
+    color: #ffffff;
+    font-weight: 600;
+    padding: 0 0 0 30px;
+    letter-spacing: 1px;
+}
+
+.movies_col {
+    padding: 0 0 0 30px;
+}
+
+.description {
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 1.48;
+    letter-spacing: 1.5px;
+    padding: 70px 0 0 0;
+}
+
+.sm_links {
+    margin: 30px 0 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: wheat;
+}
+
+a i {
+    color: white;
+    overflow: hidden;
+    font-size: 25px;
+    padding: 0 4px;
+    padding-top: 3px;
+}
+
+.fa-vk {
+    color: rgb(0, 119, 255);
+    transition: .5s;
+}
+
+.fa-vk:hover {
+    color: black;
+    transition: .5s;
+}
+
+.fa-square-odnoklassniki {
+    fill: white;
+    color: rgb(235, 114, 46);
+    transition: .5s;
+
+}
+
+.fa-square-odnoklassniki:hover {
+    color: black;
+    transition: .5s;
+
+}
+
+.fa-square-twitter {
+    color: rgb(0, 172, 237);
+    transition: .5s;
+
+}
+
+.fa-square-twitter:hover {
+    color: black;
+    transition: .5s;
+
+}
+
+.fa-square-phone {
+    color: rgb(123, 81, 157);
+    transition: .5s;
+
+}
+
+.fa-square-phone:hover {
+    color: black;
+    transition: .5s;
+
+}
+
+.fa-telegram {
+    color: rgb(100, 169, 220);
+    transition: .5s;
+
+}
+
+.fa-telegram:hover {
+    color: black;
+    transition: .5s;
 }

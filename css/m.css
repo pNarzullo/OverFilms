@@ -82,6 +82,10 @@
     margin-bottom: 40px;
 }
 
+.button_arrow {
+    cursor: pointer;
+}
+
 .series_blocks {
     gap: 20px;
     display: flex;
@@ -178,6 +182,7 @@ img {
     margin: 5px 0 0 8px;
     background-color: transparent;
     position: absolute;
+    cursor: pointer;
 }
 
 .cartoons_name {
@@ -189,6 +194,7 @@ img {
     margin: 5px 0 0 8px;
     background-color: transparent;
     position: absolute;
+    cursor: pointer;
 }
 
 @media (max-width:533px) {
@@ -333,9 +339,9 @@ img {
     cursor: pointer;
 }
 
-p:hover {
+/* p:hover {
     cursor: pointer;
-}
+} */
 
 .slider_2 {
     max-width: 512px;
@@ -371,4 +377,6 @@ p:hover {
     color: rgb(85, 84, 84);
     padding: 8px 0;
     font-weight: 600;
+    cursor: default;
 }
+
