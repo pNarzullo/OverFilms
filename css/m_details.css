@@ -181,7 +181,7 @@ a i {
 
 .leave_impression {
     border: 2px solid blue;
-    border-radius: 10px;
+    border-radius: 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -189,7 +189,7 @@ a i {
 }
 
 body {
-    height: 2000px;
+    height: 1800px;
 }
 
 .fa-thumbs-down,
@@ -318,10 +318,12 @@ body {
     color: rgba(0, 0, 0, 0.541);
     padding: 0 10px;
     cursor: pointer;
+    transition: 0.3s;
 }
 
 .send_fb:hover {
     color: white;
     background-color: gray;
     border-color: gray;
+    transition: 0.3s;
 }
