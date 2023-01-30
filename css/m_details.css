@@ -8,7 +8,6 @@
 .container {
     max-width: 1180px;
     margin: 0 auto;
-    padding: 0 10px;
 }
 
 .movie {
@@ -167,4 +166,162 @@ a i {
     justify-content: space-between;
     align-items: center;
     padding: 5px 12px 5px 10px;
+}
+
+.video_block {
+    width: 1180px;
+    margin: 0 auto;
+}
+
+.video {
+    background-color: rgb(221, 207, 207);
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+.leave_impression {
+    border: 2px solid blue;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+body {
+    height: 2000px;
+}
+
+.fa-thumbs-down,
+.fa-thumbs-up {
+    font-size: 40px;
+    color: blue;
+    transition: .3s;
+}
+
+.fa-thumbs-down:hover,
+.fa-thumbs-up:hover {
+    color: orangered;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.num {
+    display: block;
+    text-align: center;
+    padding-top: 5px;
+    font-weight: bold;
+}
+
+.about_n_review {
+    background-color: rgb(221, 207, 207);
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+.details {
+    padding: 20px;
+}
+
+.detail_desc_header {
+    color: rgb(50, 50, 50);
+    text-transform: uppercase;
+    font-size: 31px;
+    font-family: sans-serif;
+    padding: 20px 0;
+}
+
+.detail_desc_text {
+    line-height: 1.4;
+    color: rgb(85, 84, 84);
+    padding: 8px 0;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+}
+
+.feedback {
+    background-color: rgb(216, 141, 2);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    cursor: pointer;
+    margin: 0 0 20px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.feedback:hover {
+    background-color: orange;
+}
+
+#review_forms {
+    display: none;
+    animation-duration: 1.5s;
+    animation-fill-mode: both;
+    animation-name: fadeIn;
+}
+
+#review_forms.open {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.name_n_email {
+    font-weight: bold;
+    width: 500px;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    border: 2px solid rgb(190, 166, 166);
+    margin: 0 8px;
+}
+
+.forms {
+    background-color: rgb(70, 70, 70);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.feedback_text {
+    border: none;
+    margin-top: 20px;
+    margin-right: 10px;
+    font-weight: bold;
+    padding: 15px;
+    border-radius: 10px;
+    width: 960px;
+    height: 80px;
+    border: 2px solid rgb(190, 166, 166);
+}
+
+.send_fb {
+    margin-left: 10px;
+    margin-top: 20px;           
+    height: 80px;
+    border-radius: 10px;
+    border: none;
+    border: 2px solid ;
+    font-weight: bold;  
+    color: rgba(0, 0, 0, 0.541);
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+.send_fb:hover {
+    color: white;
+    background-color: gray;
+    border-color: gray;
 }

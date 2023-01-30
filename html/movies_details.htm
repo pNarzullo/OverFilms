@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detailed Movie</title>
+    <title tabindex="About Movie">&#10094;&#10094; &nbsp;About Movie&nbsp; &#10095;&#10095;</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../css/m_details.css">
-    <link rel="stylesheet" href="../css/base.css">
+        <link rel="stylesheet" href="../css/base.css">
+        <link rel="stylesheet" href="../css/m_details.css">
 </head>
 <body>
     <section class="section">
@@ -58,15 +58,56 @@
                             </div>
                         </div>
                         
-                        
-
-                        
-                        
                     </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    <section class="video">
+        <div class="container">
+
+            <div class="video_block">
+                <video src="../video/sample-5s.mp4" controls poster="../img/avatar_poster.jpg" width="1180"></video>
+            </div>
+
+            <div class="leave_impression">
+                <div class="dislike_block">
+                    <i class="fa-regular fa-thumbs-down"></i>
+                    <span class="num">3</span>
+                </div>
+
+                <div class="like_block">
+                    <i class="fa-regular fa-thumbs-up"></i>
+                    <span class="num">8</span>
                 </div>
             </div>
         </div>
     </section>
+
+    <section class="about_n_review">
+        <div class="conainer">
+            <div class="details">
+                <h2 class="detail_desc_header">It's is a test online cinema [Avatar: The Way of Water]</h2>
+
+                <p class="detail_desc_text">Avatar: The Way of Water is a 2022 American epic science fiction film directed and produced by James Cameron, who co-wrote the screenplay with Rick Jaffa and Amanda Silver from a story the trio wrote with Josh Friedman and Shane Salerno. Distributed by 20th Century Studios, it is the sequel to Avatar (2009) and the second installment in the Avatar film series. Cast members Sam Worthington, Zoe Saldaña, Stephen Lang, Joel David Moore, CCH Pounder, Giovanni Ribisi, Dileep Rao, and Matt Gerald reprise their roles from the original film, with Sigourney Weaver returning in an additional role. New cast members include Kate Winslet, Cliff Curtis, Edie Falco, and Jemaine Clement. In the film, Na'vi Jake Sully (Worthington) and his family, under renewed human threat, seek refuge with the Metkayina clan of Pandora.
+                </p>
+            </div>
+                <button class="feedback" type="submit" onclick="review_forms()">FEEDBACK</button>
+                <div id="review_forms">
+                    <form class="forms" role="form" action="/requestFine" autocomplete="off" method="POST">
+                       
+                        <input class="name_n_email" type="text" maxlength="20" placeholder="Enter your name" required>
+
+                        <input class="name_n_email" tupe="email" maxlength="40" placeholder="Your email (optional)">
+                            <input class="feedback_text" type="text"  placeholder="Your opinion" required>
+                            <button class="send_fb" type="submit">S <br> E <br> N <br> D <br></button>
+                      </form>
+                </div>
+        </div>
+    </section>
+
+
 
 
     <script src="../js/m_details.js"></script>
