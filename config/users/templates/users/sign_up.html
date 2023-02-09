@@ -1,0 +1,23 @@
+{% extends 'users/layout_users.html' %}
+{% block ub_title %}
+    <title>User Creation</title>
+{% endblock %}
+
+{% block users %}
+<div class="users">
+    <form class="form_1" method="post">
+        <h1 class="head">Sign up</h1>
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit" class="u_btn">Confirm</button>
+
+        <p class="content mt-3">
+            Already have an account?
+            <span>
+                <a href="{% url 'users:sign_in' %}">Sign in here</a>
+            </span>
+         </p>
+         
+    </form>
+</div>
+{% endblock %}

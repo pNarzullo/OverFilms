@@ -1,0 +1,126 @@
+{% extends 'movies/layout.html' %}
+{% load static %}
+
+{% block title %}
+    {{ movie.title }}
+{% endblock %}
+
+{% block movies %}
+<section
+class="about_movies">
+<div class="container">
+        <div class="movie">
+            <div class="movie_head">
+                <h1 class="m_header"><i class="fa-regular fa-circle-play"></i>{{ movie.title }}</h1>
+
+                <p class="rating"><i class="fa-brands fa-imdb"></i>IMDb <span class="grade">{{ movie.rating }}</span></p>
+
+            </div>
+
+            <hr>
+
+            <div class="flexed_movie">
+
+                <div class="movie_img">
+                    <img src="{{ movie.image.url }}" alt="">
+                </div>
+
+                <hr>
+                
+                <div class="movies_col">
+                    <div class="about_movie">
+                        <p class="field">Year:</p>
+                        <p class="value">{{ movie.year_n_duration }}</p>
+                    </div>
+                    <div class="about_movie">
+                        <p class="field">Genre:</p>
+                        <p class="value">{{ movie.genre }}</p>
+                    </div>
+                    <div class="about_movie">
+                        <p class="field">Country:</p>
+                        <p class="value">{{ movie.country }}</p>
+                    </div>
+
+                </div>
+                
+                <hr>
+
+                <div class="desc_n_links">
+                    <p class="description">{{ movie.desc }}</p>
+
+                    <div class="after_desc">
+                        <div class="sm_links">
+                            <a href="https://vk.com/" target="_blank" title="VK"><i class="fa-brands fa-vk"></i></a>
+                            <a href="https://ok.ru/" target="_blank" title="Odnoklassniki"><i
+                                    class="fa-brands fa-square-odnoklassniki"></i></a>
+                            <a href="https://twitter.com/?lang=ru" target="_blank" title="Twitter"><i
+                                    class="fa-brands fa-square-twitter"></i></a>
+                            <a href="https://www.viber.com/ru/" target="_blank" title="Viber"><i
+                                    class="fa-solid fa-square-phone"></i></a>
+                            <a href="https://telegram.org/" target="_blank" title="Telegram"><i
+                                    class="fa-brands fa-telegram"></i></a>
+                        </div>
+                        <div class="reviews">
+                            <img class="star" src="{% static 'app/img/star-fill.svg' %}" alt="">
+                            <img class="star" src="{% static 'app/img/star-fill.svg' %}" alt="">
+                            <img class="star" src="{% static 'app/img/star-fill.svg' %}" alt="">
+                            <img class="star" src="{% static 'app/img/star-fill.svg' %}" alt="">
+                            <img class="star" src="{% static 'app/img/star-fill.svg' %}" alt="">
+                            <img class="star" src="{% static 'app/img/star-fill.svg' %}" alt="">
+                            <img class="star" src="{% static 'app/img/star-fill.svg' %}" alt="">
+                            <img class="star" src="{% static 'app/img/star.svg' %}" alt="">
+                            <img class="star" src="{% static 'app/img/star.svg' %}" alt="">
+                            <img class="star" src="{% static 'app/img/star.svg' %}" alt="">
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        
+        
+    </div>
+    </section>
+    <section class="video">
+        <div class="container">
+
+            <div class="video_block">
+                <video src="{{ movie.video.url }}" controls poster="{{ movie.poster.url }}" width="1180"></video>
+            </div>
+
+            <div class="leave_impression">
+                <div class="dislike_block">
+                    <i class="fa-regular fa-thumbs-down"></i>
+                    <span class="num">3</span>
+                </div>
+
+                <div class="like_block">
+                    <i class="fa-regular fa-thumbs-up"></i>
+                    <span class="num">8</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about_n_review">
+        <div class="conainer">
+            <div class="details">
+                <h2 class="detail_desc_header">It's a test online cinema: <span class="about_styles">{{ movie.title }}</span></h2>
+
+                <p class="detail_desc_text">{{ movie.wiki }}</p>
+            </div>
+            <button class="feedback" type="submit" onclick="review_forms()">FEEDBACK</button>
+            <div id="review_forms">
+                <form action="{% url 'movies:m_details' movie.slug %}" method="post" class="forms">
+                    {% csrf_token %}
+                    <input class="name_n_email" type="text" maxlength="20" placeholder="Enter your name" required name="name">
+
+                    <input class="name_n_email" tupe="email" maxlength="40" placeholder="Your email (optional)" name="email">
+                    <input class="feedback_text" type="text" placeholder="Your opinion" required name="text">
+                    <button class="send_fb" type="submit">SEND</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    {% endblock %}

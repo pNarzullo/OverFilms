@@ -1,0 +1,221 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <meta name="color-scheme" content="">
+    <meta name="theme-color" content="">
+    <link rel="shortcut icon" href="{% static 'app/img/favicon.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'app/css/users.css' %}">
+    <link rel="stylesheet" href="{% static 'app/css/m_details.css' %}">
+    <link rel="stylesheet" href="{% static 'app/css/movies.css' %}">
+    <link rel="stylesheet" href="{% static 'app/css/base.css' %}">
+    <title>{% block title %}Watch Movies &#10003;{% endblock %}</title>
+
+</head>
+
+<body>
+
+    <script>
+        (function () {
+            var preferDark = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+            var preferTheme = (preferDark ? 'dark' : 'light');
+            console.log(preferDark);
+
+            var theme = localStorage.getItem('theme');
+
+            if (theme === 'null')
+                theme = preferTheme;
+
+            setTheme(theme);
+        })();
+
+        function setTheme(theme) {
+
+            document.body.classList.toggle('theme--dark', (theme == 'dark'));
+
+            var themeColors = { light: '#ffffff', dark: '#333333' };
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', themeColors[theme])
+
+            document.querySelector('meta[name="color-scheme"]').setAttribute('content', theme);
+
+            localStorage.setItem('theme', theme);
+        }
+
+        window.addEventListener('load', function () {
+            document.getElementById('switcher').addEventListener('click', function () {
+                var theme = localStorage.getItem('theme');
+                setTheme((theme === 'dark' ? 'light' : 'dark'));
+            });
+        });
+    </script>
+
+    <div class="shell">
+
+        <!-- Шапка сайта -->
+        <header class="header">
+            <div class="container">
+                <div class="nav">
+
+                    <div class="burger_and_logo">
+
+                        <!-- Логотип -->
+                        <div class="header_logo">
+                            <a href="{% url 'movies:base' %}">
+                                <div class="logo">
+                                    <img class="logo" src="{% static 'app/img/logo.png' %}" alt="">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="burger_bg">
+                            <div class="burger">
+                                <span></span>
+                            </div>
+                        </div>
+                        <!-- Меню навигаций -->
+                        <ul class="navbar accordion" data-accordion="open">
+                            <li>
+                                <div class="dropdown">
+                                    <button class="dropbtn nav_c accordion_header"><i
+                                            class="fa-solid fa-video icon"></i>Films<i
+                                            class="ad_i arrow down"></i></button>
+                                    <div class="dropdown-content accordion_body">
+                                        {% for genre in genres %}
+
+                                        <a class="dd_l" href="#">{{ genre }}</a>
+
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="dropdown">
+                                    <button class="dropbtn nav_c accordion_header"><i
+                                            class="fa-solid fa-tv icon"></i></i>Series<i
+                                            class="ad_i arrow down"></i></button>
+                                    <div class="dropdown-content accordion_body">
+                                        {% for genre in genres %}
+
+                                        <a class="dd_l" href="#">{{ genre }}</a>
+
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="dropdown">
+                                    <button class="dropbtn nav_c"><i
+                                            class="fa-solid fa-cubes icon"></i>Cartoons</button>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                    <div class="navbar_end">
+                        <form action="{% url 'movies:base' %}" class="nb_end search">
+                            <input type="search" placeholder="Search" class="s_input" name="search">
+                            <button type="submit" class="s_btn"><i
+                                    class="fa-solid fa-magnifying-glass search_i"></i></button>
+                        </form>
+
+
+
+
+                        <div class="dropdown_users">
+
+                            <button class="dropbtn_users" onclick="myFunction()" class="nb_end account"><i
+                                    class="dropbtn_users fa-solid fa-user-large acc_i"></i></button>
+
+                            <div class="dropdown_users_content" id="myDropdown">
+
+                                <div class="user">
+                                    {% if user.is_authenticated %}
+                                    <a>
+                                        <p class="user"><i class="fa-solid fa-user-tie u_icons"></i>{{ user }}</p>
+                                    </a>
+                                    {% endif %}
+                                </div>
+                                <a href="{% url 'users:sign_in' %}">
+                                    <li><i class="fa-sharp fa-solid fa-right-to-bracket u_icons"></i>Sign In</li>
+                                </a>
+                                <a href="{% url 'users:sign_up' %}">
+                                    <li><i class="fa-solid fa-plus u_icons"></i>Sign Up</li>
+                                </a>
+                                <a href="{% url 'users:sign_out' %}">
+                                    <li><i class="fa-solid fa-right-from-bracket u_icons"></i>Sign Out</li>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </header>
+
+
+        <!-- Основная часть сайта -->
+        <main class="main">
+            <div class="container">
+                {% block movies %}
+                {% endblock %}
+            </div>
+        </main>
+
+
+
+        <!-- Подвал сайта -->
+        <footer class="footer">
+            <div class="container">
+                <div class="created_by">
+                    <div class="footer_logo">
+                        <a class="f_logo">
+                            OverFilms
+                        </a>
+                    </div>
+                    <div class="authors">
+                        <a href="{% url 'movies:authors' %}" class="authors_link">
+                            Authors
+                        </a>
+                    </div>
+                </div>
+                <div class="note">
+                    <p class="note_text">The site was completed as a practice for the completion of training at
+                        Monday Academy
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <div class="theme">
+            <span class="theme_switcher light">light</span> <span class="theme_switcher darko">dark</span>    
+            <span class="switcher_theme">mode</span>    
+            <i id="switcher" class="fa-regular fa-circle-dot tc_icon dark"></i>
+        </div>
+
+
+
+
+
+
+
+
+    </div>
+    <script src="{% static 'app/js/jquery.js' %}"></script>
+    <script src="{% static 'app/js/m_details.js' %}"></script>
+    <script src="{% static 'app/js/movies.js' %}"></script>
+    <script src="{% static 'app/js/base.js' %}"></script>
+</body>
+
+</html>
