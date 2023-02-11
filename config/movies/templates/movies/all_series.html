@@ -1,0 +1,64 @@
+{% extends 'movies/layout.html' %}
+
+{% block movies %}
+    
+
+    <section class="all">
+        <div class="container">
+
+            <div class="am_header">
+                <div class="head_n_links">
+                    <h1 class="am"><i class="fa-solid fa-clapperboard am_icon"></i>Over Series</h1>
+
+                    <div class="sm_links">
+                        <a href="https://vk.com/" target="_blank" title="VK"><i class="fa-brands fa-vk sm"></i></a>
+                        <a href="https://ok.ru/" target="_blank" title="Odnoklassniki"><i
+                                class="fa-brands fa-square-odnoklassniki sm"></i></a>
+                        <a href="https://twitter.com/?lang=ru" target="_blank" title="Twitter"><i
+                                class="fa-brands fa-square-twitter sm"></i></a>
+                        <a href="https://www.viber.com/ru/" target="_blank" title="Viber"><i
+                                class="fa-solid fa-square-phone sm"></i></a>
+                        <a href="https://telegram.org/" target="_blank" title="Telegram"><i
+                                class="fa-brands fa-telegram sm"></i></a>
+                    </div>
+                </div>
+                <p class="about_am">Fans of long-running film projects are especially thrilled. There is a logical explanation for this - it is this cool brand that generously produces the most exciting and affordable leisure in the world - series. You can talk about the merits of this famous studio for a long time. The facts speak for themselves, for example, one of them: projects are filmed for years and even decades, which indicates a 100% success with the audience. Everyone knows that experienced soap opera makers run pilot episodes first. If they were not greeted as warmly as we would like, then the shooting is immediately curtailed. As for us, it's a completely different story. Usually the season comes with a bang, and it is already clear that we urgently need to start working on a sequel.
+                </p>
+            </div>
+
+            <div class="all_movies">
+                {% for s in series %}
+                    
+                <div class="am_block">
+                    <h1 class="am_title">{{ s.title }}</h1>
+                    <img src="{{ s.image.url }}" alt="" class="am_image">
+                </div>
+                
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section class="after_all">
+        <p class="after_all_about">
+            An interesting feature of the favorite brand is its non-standard approach to prime broadcasts. Here you can immediately watch online all the series in a row without tedious stretching of pleasure. Of course, each viewer can train their willpower and try to watch the new product for free in the usual format: open the next episode every week. In any case, the company leaves the choice to the fans, which they, in turn, appreciate and respond with positive feedback.
+        </p>
+
+        <h1 class="after_all_header">SERIES FROM OVERFILMS ONLINE</h1>
+
+        <p class="after_all_about">
+            In the arsenal of the famous studio there are many hits that have become classics of ideal series. There are not only light sitcoms here, but also rather deep meanings and even intellectual projects that stand apart in the entertainment industry. Such pictures leave room for reflection and make you think about the oddities of the plot and the behavior of the characters. The key to success is to bet on win-win popular genres, but OverFilms is not afraid of difficulties and can even take on the popularization of forgotten stories in the spirit of westerns or mafia showdowns. As a result, the brainchild of the brand is not offended by prestigious awards from film academies and flattering reviews from connoisseurs of quality films.
+        </p>
+
+        <h1 class="after_all_header">ALL SERIES FROM OVERFILMS ONLINE</h1>
+
+        <p class="after_all_about">
+            Visitors to free online cinemas often prioritize time-tested hits. Filming of many series takes place at the studio for several years, but this does not bother the audience. It seems that they are ready to follow the life of their favorite characters endlessly. There are both light and bright stories about love and friendship, as well as gloomy mystical pictures and even chilling horrors. If you wish, you can find a selection specifically for a specific audience, which will touch on current topics for women, teenagers, people of a certain specialty. The global corporation has expanded so much that it is no longer limited to filming its products. Don't be surprised if you learn that Netflix is preparing to launch a series produced by studios from other countries. The brand selects promising projects and helps to convey them to the fans in the best quality and with the preservation of its corporate identity.
+
+
+             
+        </p>
+    </section>
+
+
+{% endblock %}

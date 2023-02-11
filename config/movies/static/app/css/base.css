@@ -3,6 +3,7 @@ body {
     --color-bg-content: rgba(128, 128, 128, 0.26);
     --color-bg-input: #fff;
     --color-bg-btn: rgb(216, 141, 2);
+    --color-fb-hover: orange;
     --color-bg-series: white;
     --color-slider-btn-hover: rgb(190, 190, 190);
 
@@ -10,6 +11,7 @@ body {
     --color-field: rgb(139, 138, 136);
     --color-value: rgb(232, 230, 213);
     --color-leave-impression: blue;
+    --color-leave-impression-hover: orange;
     --color-about-styles: rgb(0, 0, 255);
     --color-after-desc: white;
     --color-input-bg: white;
@@ -29,12 +31,14 @@ body.theme--dark {
     --color-bg: #222;
     --color-bg-content: #292929;
     --color-bg-btn: rgb(4, 75, 133);
+    --color-fb-hover: rgb(0, 110, 255);
     --color-slider-btn-hover: rgb(61, 61, 61);
 
     --color-detail-header: rgb(0, 247, 255);
-    --color-field: rgb(87, 85, 131);
+    --color-field: rgb(164, 158, 250);
     --color-value: rgb(52, 189, 98);
     --color-leave-impression: rgb(0, 255, 98);
+    --color-leave-impression-hover: rgb(0, 183, 255);
     --color-about-styles: rgb(0, 255, 136);
     --color-after-desc: #333;
     --color-input-bg: #222;
@@ -475,6 +479,15 @@ body.theme--dark .darko {display: none;}
         font-size: 18px;
     }
 
+    .authors_link {
+        font-size: 15px;
+        color: rgb(104, 97, 97);
+        letter-spacing: 1px;
+        font-weight: bold;
+        transition: .5s;
+    }
+    
+
     .note_text {
         font-size: 11px;
     }
@@ -664,6 +677,15 @@ body.theme--dark .darko {display: none;}
     .f_logo {
         font-size: 14px;
     }
+
+    .authors_link {
+        font-size: 13px;
+        color: rgb(104, 97, 97);
+        letter-spacing: 1px;
+        font-weight: bold;
+        transition: .5s;
+    }
+    
 
     .note_text {
         font-size: 8px;

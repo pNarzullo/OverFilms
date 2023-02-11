@@ -50,15 +50,15 @@ class="about_movies">
 
                     <div class="after_desc">
                         <div class="sm_links">
-                            <a href="https://vk.com/" target="_blank" title="VK"><i class="fa-brands fa-vk"></i></a>
+                            <a href="https://vk.com/" target="_blank" title="VK"><i class="fa-brands fa-vk sm"></i></a>
                             <a href="https://ok.ru/" target="_blank" title="Odnoklassniki"><i
-                                    class="fa-brands fa-square-odnoklassniki"></i></a>
+                                    class="fa-brands fa-square-odnoklassniki sm"></i></a>
                             <a href="https://twitter.com/?lang=ru" target="_blank" title="Twitter"><i
-                                    class="fa-brands fa-square-twitter"></i></a>
+                                    class="fa-brands fa-square-twitter sm"></i></a>
                             <a href="https://www.viber.com/ru/" target="_blank" title="Viber"><i
-                                    class="fa-solid fa-square-phone"></i></a>
+                                    class="fa-solid fa-square-phone sm"></i></a>
                             <a href="https://telegram.org/" target="_blank" title="Telegram"><i
-                                    class="fa-brands fa-telegram"></i></a>
+                                    class="fa-brands fa-telegram sm"></i></a>
                         </div>
                         <div class="reviews">
                             <img class="star" src="{% static 'app/img/star-fill.svg' %}" alt="">
@@ -89,17 +89,38 @@ class="about_movies">
                 <video src="{{ cartoon.video.url }}" controls poster="{{ cartoon.poster.url }}" width="1180"></video>
             </div>
 
-            <div class="leave_impression">
-                <div class="dislike_block">
-                    <i class="fa-regular fa-thumbs-down"></i>
-                    <span class="num">3</span>
-                </div>
 
-                <div class="like_block">
-                    <i class="fa-regular fa-thumbs-up"></i>
-                    <span class="num">8</span>
-                </div>
+
+
+
+            <div class="leave_impression">
+
+                
+                <form action="{% url 'movies:c_like' cartoon.slug %}" method="post" class="">
+                {% csrf_token %}
+              
+                <button type="submit" class="like_block">
+                  <i class="fa-regular fa-thumbs-up"></i>
+                  <span class="num">{{ cartoon.total_likes }}</span>
+                </button>
+    
+                </form>
+    
+                <form action="{% url 'movies:c_dislike' cartoon.slug %}" method="post" class="">
+                {% csrf_token %}
+              
+                <button type="submit" class="dislike_block">
+                  <i class="fa-regular fa-thumbs-down"></i>
+                  <span class="num">{{ cartoon.total_dislikes }}</span>
+                </button>
+    
+                </form>
+
+
             </div>
+
+
+
         </div>
     </section>
 
@@ -107,17 +128,35 @@ class="about_movies">
         <div class="conainer">
             <div class="details">
                 <h2 class="detail_desc_header">It's a test online cinema: <span class="about_styles">{{ cartoon.title }}</span></h2>
-
                 <p class="detail_desc_text">{{ cartoon.wiki }}</p>
+                <hr class="rev_hr">
             </div>
+
+
+            <section class="user_reviews">
+                <div class="container">
+                    <div class="reviews_block">
+                        <h1 class="re_header">Reviews</h1>
+
+                        {% for cr in cartoon.cartoonsreview_set.all %}
+                        <div class="u_reviews">
+                            <h1 class="reviewer">{{ cr.c_name }}</h1>
+                            <p class="review">{{ cr.c_text }}</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+
+
             <button class="feedback" type="submit" onclick="review_forms()">FEEDBACK</button>
             <div id="review_forms">
-                <form action="{% url 'movies:c_details' cartoon.slug %}" method="post" class="forms">
+                <form action="{% url 'movies:c_add_review' cartoon.id %}" method="post" class="forms">
                     {% csrf_token %}
-                    <input class="name_n_email" type="text" maxlength="20" placeholder="Enter your name" required name="name">
+                    <input class="name_n_email" type="text" maxlength="20" placeholder="Enter your name" required name="c_name">
 
-                    <input class="name_n_email" tupe="email" maxlength="40" placeholder="Your email (optional)" name="email">
-                    <input class="feedback_text" type="text" placeholder="Your opinion" required name="text">
+                    <input class="name_n_email" tupe="email" maxlength="40" placeholder="Your email (optional)" name="c_email">
+                    <input class="feedback_text" type="text" placeholder="Your opinion" required name="c_text">
                     <button class="send_fb" type="submit">SEND</button>
                 </form>
             </div>

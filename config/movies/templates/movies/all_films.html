@@ -1,0 +1,62 @@
+{% extends 'movies/layout.html' %}
+
+{% block movies %}
+    
+
+    <section class="all">
+        <div class="container">
+
+            <div class="am_header">
+                <div class="head_n_links">
+                    <h1 class="am"><i class="fa-solid fa-clapperboard am_icon"></i>Over Films</h1>
+
+                    <div class="sm_links">
+                        <a href="https://vk.com/" target="_blank" title="VK"><i class="fa-brands fa-vk sm"></i></a>
+                        <a href="https://ok.ru/" target="_blank" title="Odnoklassniki"><i
+                                class="fa-brands fa-square-odnoklassniki sm"></i></a>
+                        <a href="https://twitter.com/?lang=ru" target="_blank" title="Twitter"><i
+                                class="fa-brands fa-square-twitter sm"></i></a>
+                        <a href="https://www.viber.com/ru/" target="_blank" title="Viber"><i
+                                class="fa-solid fa-square-phone sm"></i></a>
+                        <a href="https://telegram.org/" target="_blank" title="Telegram"><i
+                                class="fa-brands fa-telegram sm"></i></a>
+                    </div>
+                </div>
+                <p class="about_am">During the history of the existence of the studio, many interesting films were shot. Some of them have been awarded professional awards, while others occupy top positions in popular ratings. Gone are the days when borders and language barriers were a major barrier to film lovers. Now you can find many pictures in Russian and watch them accompanied by high-quality polyphonic voice acting. The only difficulty was charging a fee for viewing each story. But this barrier can be overcome if you find a version without subscriptions. In this case, you do not need to choose a film on the principle of affordability. You can watch whatever you like for free on the site.
+                </p>
+            </div>
+
+            <div class="all_movies">
+                {% for f in films %}
+                    
+                <div class="am_block">
+                    <h1 class="am_title">{{ f.title }}</h1>
+                    <img src="{{ f.image.url }}" alt="" class="am_image">
+                </div>
+                
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section class="after_all">
+        <p class="after_all_about">
+            Standing out from the background of film corporations is not so easy. For brand recognition, you need to offer viewers excellent quality, a wide range of genres and relevance of topics. The cast is also important, in which recognized stars should periodically flash. All this has been achieved. Employees consistently fulfill plans for their own production of new projects. The company also operates in another direction: it buys the rights to distribute films. Of course, only the best films are awarded this honor, in which producers with an experienced eye see potential hits with impressive box office receipts.
+        </p>
+
+        <h1 class="after_all_header">FILMS AND MOVIES FROM OVERFILMS</h1>
+
+        <p class="after_all_about">
+            In recent years, more and more attention has been paid to online screenings. It is in this format that fans of art films prefer to get acquainted with the premieres. In addition, this method is optimal for the largest audience coverage. People enthusiastically exchange feedback, encouraging others to watch interesting stories. Particular attention should be paid to non-banal subjects. In each genre, viewers will find dozens of original narratives. It can be an unpredictable thriller, a sparkling comedy, a heartfelt military drama or a thrilling action movie with fantasy elements. The most difficult thing is often the difficult choice of a movie for leisure if you do not have much time. But even if you can devote many hours to your passion, the source of new stories will never dry up.
+        </p>
+
+        <h1 class="after_all_header">ALL OVERFILMS FILMS IN DIFFERENT LANGUAGES</h1>
+
+        <p class="after_all_about">
+            You will find an extensive collection of films in Russian, created in the best traditions of American cinematography. It is no secret that the main emphasis is on entertainment, and the main goal is to entertain the audience. You can watch pictures from past years or switch to premiere shows that quickly appear online. Biographical dramas, disasters, detective stories, science fiction with thriller elements - all the abundance of films is available at any time. At the same time, you can assess the objectivity of critics by looking at controversial films nominated for an Oscar, or those that have already received this award. Most viewers are guided by their own opinion, and it doesn't matter to them whether the film chosen for the evening has prestigious awards. The main thing is that the acting should touch them to the core and evoke real emotions of fear, joy, empathy or sadness. These criteria are fully consistent with any project posted in the public domain.
+
+        </p>
+    </section>
+
+
+{% endblock %}

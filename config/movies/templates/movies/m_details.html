@@ -25,7 +25,7 @@ class="about_movies">
                     <img src="{{ movie.image.url }}" alt="">
                 </div>
 
-                <hr>
+                <hr class="m_hr">
                 
                 <div class="movies_col">
                     <div class="about_movie">
@@ -50,15 +50,15 @@ class="about_movies">
 
                     <div class="after_desc">
                         <div class="sm_links">
-                            <a href="https://vk.com/" target="_blank" title="VK"><i class="fa-brands fa-vk"></i></a>
+                            <a href="https://vk.com/" target="_blank" title="VK"><i class="fa-brands fa-vk sm"></i></a>
                             <a href="https://ok.ru/" target="_blank" title="Odnoklassniki"><i
-                                    class="fa-brands fa-square-odnoklassniki"></i></a>
+                                    class="fa-brands fa-square-odnoklassniki sm"></i></a>
                             <a href="https://twitter.com/?lang=ru" target="_blank" title="Twitter"><i
-                                    class="fa-brands fa-square-twitter"></i></a>
+                                    class="fa-brands fa-square-twitter sm"></i></a>
                             <a href="https://www.viber.com/ru/" target="_blank" title="Viber"><i
-                                    class="fa-solid fa-square-phone"></i></a>
+                                    class="fa-solid fa-square-phone sm"></i></a>
                             <a href="https://telegram.org/" target="_blank" title="Telegram"><i
-                                    class="fa-brands fa-telegram"></i></a>
+                                    class="fa-brands fa-telegram sm"></i></a>
                         </div>
                         <div class="reviews">
                             <img class="star" src="{% static 'app/img/star-fill.svg' %}" alt="">
@@ -89,35 +89,72 @@ class="about_movies">
                 <video src="{{ movie.video.url }}" controls poster="{{ movie.poster.url }}" width="1180"></video>
             </div>
 
-            <div class="leave_impression">
-                <div class="dislike_block">
-                    <i class="fa-regular fa-thumbs-down"></i>
-                    <span class="num">3</span>
-                </div>
+<!-- ----------------------------------------------------------------------------------------------------- -->
 
-                <div class="like_block">
-                    <i class="fa-regular fa-thumbs-up"></i>
-                    <span class="num">8</span>
-                </div>
+            <div class="leave_impression">
+
+                
+                <form action="{% url 'movies:m_like' movie.slug %}" method="post" class="">
+                {% csrf_token %}
+              
+                <button type="submit" class="like_block">
+                  <i class="fa-regular fa-thumbs-up"></i>
+                  <span class="num">{{ movie.total_likes }}</span>
+                </button>
+    
+                </form>
+    
+                <form action="{% url 'movies:m_dislike' movie.slug %}" method="post" class="">
+                {% csrf_token %}
+              
+                <button type="submit" class="dislike_block">
+                  <i class="fa-regular fa-thumbs-down"></i>
+                  <span class="num">{{ movie.total_dislikes }}</span>
+                </button>
+    
+                </form>
+
+
             </div>
-        </div>
+        
+<!-- ------------------------------------------------------------------------------------------------------ -->
+        
+    </div>
     </section>
 
     <section class="about_n_review">
         <div class="conainer">
+
             <div class="details">
                 <h2 class="detail_desc_header">It's a test online cinema: <span class="about_styles">{{ movie.title }}</span></h2>
-
                 <p class="detail_desc_text">{{ movie.wiki }}</p>
+                <hr class="rev_hr">
             </div>
+
+
+            <section class="user_reviews">
+                <div class="container">
+                    <div class="reviews_block">
+                        <h1 class="re_header">Reviews</h1>
+
+                        {% for mr in movie.filmsreview_set.all %}
+                        <div class="u_reviews">
+                            <h1 class="reviewer">{{ mr.m_name }}</h1>
+                            <p class="review">{{ mr.m_text }}</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+
             <button class="feedback" type="submit" onclick="review_forms()">FEEDBACK</button>
             <div id="review_forms">
-                <form action="{% url 'movies:m_details' movie.slug %}" method="post" class="forms">
+                <form action="{% url 'movies:m_add_review' movie.id %}" method="post" class="forms">
                     {% csrf_token %}
-                    <input class="name_n_email" type="text" maxlength="20" placeholder="Enter your name" required name="name">
+                    <input class="name_n_email" type="text" maxlength="20" placeholder="Enter your name" required name="m_name">
 
-                    <input class="name_n_email" tupe="email" maxlength="40" placeholder="Your email (optional)" name="email">
-                    <input class="feedback_text" type="text" placeholder="Your opinion" required name="text">
+                    <input class="name_n_email" tupe="email" maxlength="40" placeholder="Your email (optional)" name="m_email">
+                    <input class="feedback_text" type="text" placeholder="Your opinion" required name="m_text">
                     <button class="send_fb" type="submit">SEND</button>
                 </form>
             </div>

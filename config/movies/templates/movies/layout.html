@@ -12,8 +12,10 @@
 
     <meta name="color-scheme" content="">
     <meta name="theme-color" content="">
+    
     <link rel="shortcut icon" href="{% static 'app/img/favicon.ico' %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'app/css/users.css' %}">
+    <link rel="stylesheet" href="{% static 'app/css/all_movies.css' %}">
     <link rel="stylesheet" href="{% static 'app/css/m_details.css' %}">
     <link rel="stylesheet" href="{% static 'app/css/movies.css' %}">
     <link rel="stylesheet" href="{% static 'app/css/base.css' %}">
@@ -83,9 +85,13 @@
                         <ul class="navbar accordion" data-accordion="open">
                             <li>
                                 <div class="dropdown">
-                                    <button class="dropbtn nav_c accordion_header"><i
-                                            class="fa-solid fa-video icon"></i>Films<i
-                                            class="ad_i arrow down"></i></button>
+
+                                    <a href="{% url 'movies:all_films' %}">
+                                    <button class="dropbtn nav_c accordion_header">
+                                        <i class="fa-solid fa-video icon"></i>Films<i class="ad_i arrow down"></i>
+                                    </button>
+                                    </a>
+
                                     <div class="dropdown-content accordion_body">
                                         {% for genre in genres %}
 
@@ -98,9 +104,13 @@
 
                             <li>
                                 <div class="dropdown">
-                                    <button class="dropbtn nav_c accordion_header"><i
-                                            class="fa-solid fa-tv icon"></i></i>Series<i
-                                            class="ad_i arrow down"></i></button>
+
+                                    <a href="{% url 'movies:all_series' %}">
+                                    <button class="dropbtn nav_c accordion_header">
+                                        <i class="fa-solid fa-tv icon"></i>Series<i class="ad_i arrow down"></i>
+                                    </button>
+                                    </a>
+
                                     <div class="dropdown-content accordion_body">
                                         {% for genre in genres %}
 
@@ -113,8 +123,11 @@
 
                             <li>
                                 <div class="dropdown">
-                                    <button class="dropbtn nav_c"><i
-                                            class="fa-solid fa-cubes icon"></i>Cartoons</button>
+
+                                    <a href="{% url 'movies:all_cartoons' %}">
+                                    <button class="dropbtn nav_c"><i class="fa-solid fa-cubes icon"></i>Cartoons</button>
+                                    </a>
+
                                 </div>
                             </li>
                         </ul>

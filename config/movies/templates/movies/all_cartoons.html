@@ -1,0 +1,61 @@
+{% extends 'movies/layout.html' %}
+
+{% block movies %}
+    
+
+    <section class="all">
+        <div class="container">
+
+            <div class="am_header">
+                <div class="head_n_links">
+                    <h1 class="am"><i class="fa-solid fa-clapperboard am_icon"></i>Over Cartoons</h1>
+
+                    <div class="sm_links">
+                        <a href="https://vk.com/" target="_blank" title="VK"><i class="fa-brands fa-vk sm"></i></a>
+                        <a href="https://ok.ru/" target="_blank" title="Odnoklassniki"><i
+                                class="fa-brands fa-square-odnoklassniki sm"></i></a>
+                        <a href="https://twitter.com/?lang=ru" target="_blank" title="Twitter"><i
+                                class="fa-brands fa-square-twitter sm"></i></a>
+                        <a href="https://www.viber.com/ru/" target="_blank" title="Viber"><i
+                                class="fa-solid fa-square-phone sm"></i></a>
+                        <a href="https://telegram.org/" target="_blank" title="Telegram"><i
+                                class="fa-brands fa-telegram sm"></i></a>
+                    </div>
+                </div>
+                <p class="about_am">The animation genre has changed a lot in recent decades. Now, in terms of entertainment and intensity of passions, it is not inferior to feature films. The best confirmation of this was cartoons for every taste. The company works in different directions: it creates projects not only for children, but also for adults. Many hits are quite suitable for family viewing and are designed for ages 0+. But there are also those that are not recommended for children to watch due to the presence of black humor and ambiguous scenes.
+                </p>
+            </div>
+
+            <div class="all_movies">
+                {% for c in cartoons %}
+                    
+                <div class="am_block">
+                    <h1 class="am_title">{{ c.title }}</h1>
+                    <img src="{{ c.image.url }}" alt="" class="am_image">
+                </div>
+                
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section class="after_all">
+        <p class="after_all_about">
+            The masters of the genre, united by the brand of the studio, decided to show the whole variety of life to a huge audience for free. With their light hand, not only beautiful princesses in luxurious dresses, but also very brave characters disperse around the world. For example, a prince may turn out to be not at all a beautiful young man, but, for example, a dragon, and a young lady of royal blood will appear in the form of an alcoholic. In a word, watch online projects from this collection, focusing on marking by age restrictions. One thing is for sure, Netflix has declared war on monotony and is trying to show the world to a large audience for free, both from the magical and from the realistic side.
+        </p>
+
+        <h1 class="after_all_header">CARTOONS OVERFILMS WATCH ONLINE</h1>
+
+        <p class="after_all_about">
+            Imagine how great it is to go back to childhood and watch Netflix cartoons with the adventures of funny characters with your child. Of course, one must be prepared for the fact that the heroes of modern cartoons are very different from the previous ones. For example, these can be trolls, who were not very favored by storytellers before and were presented only as negative characters. Perhaps only love for cute little animals remained unchanged, but they have become more dynamic and creative.
+        </p>
+
+        <h1 class="after_all_header">CARTOONS FOR OVERFILMS, WATCH WITH YOUR KIDS</h1>
+
+        <p class="after_all_about">
+            The holiday, arranged by the animators of the famous brand, continues thanks to the frequent appeal to familiar plots. For example, if the project caused a real boom in audience sympathy, then its heroes will probably return again in new episodes. Watch online Netflix cartoons that, thanks to your love, can turn into large-scale series. The extensive collection has accumulated many entertaining paintings that will adequately decorate the leisure of the whole family. There are many adventure, fairy tale and humorous stories in the selection. The decoration of this holiday of joy will be charismatic main characters who sing, dance and live to the fullest. This sets us a great example and charges us with optimism.
+        </p>
+    </section>
+
+
+{% endblock %}
