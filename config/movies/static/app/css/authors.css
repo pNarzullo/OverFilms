@@ -7,10 +7,9 @@
 }
 
 body {
-    background-image: url("../authors/space.jpg");
+    background-image: url("../authors/authors_background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    height: 1100px;
 }
 
 img {
@@ -19,7 +18,12 @@ img {
 }
 
 hr {
-    border-color: rgba(0, 235, 243, 0.384);
+    border: none;
+    color: rgba(0, 235, 243, 0.479);
+    background-color: rgba(0, 235, 243, 0.479);
+    height: 2px;
+    margin: 0;
+    padding: 0;
 }
 
 h2, h3 {
@@ -27,9 +31,18 @@ h2, h3 {
 }
 
 .a_header {
+    font-size: 40px;
     color: rgb(255, 255, 255);
     text-shadow: 0 0 10px #000;
-    margin-top: 20px;
+    margin: 20px auto 0px auto;
+    font-size: 50px;
+    text-transform: uppercase;
+    background: repeating-linear-gradient(white, white 2px, #7AB4E2 2px, #7AB4E2 3px);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #183D58;
+    display: table;
+
 }
 
 .container {
@@ -40,17 +53,18 @@ h2, h3 {
     border-right: 3px solid black; */
     font-family: consolas;
     text-align: center;
-    padding: 0 10px;
+    padding: 0 10px 40px 10px;
 }
 
 .inst {
     display: inline-block;
     padding: 10px;
-    margin: 20px 0;
+    margin: 40px 0;
     background-color: rgba(255, 170, 0, 0.459);
     color: rgb(255, 255, 255);
     border-radius: 5px;
     animation: card_animate .3s infinite;
+    transition: .3s;
 }
 
 .inst:hover {
@@ -81,8 +95,10 @@ h2, h3 {
     background-color: rgba(255, 0, 0, 0.452);
     color: rgb(255, 255, 255);
     font-weight: 200;
-    margin: 0 10px;
+    margin: 40px 10px;
     margin-bottom: 20px;
+    transition: .3s;
+    
     animation: card_animate .3s infinite;
 }
 
@@ -161,10 +177,25 @@ h2, h3 {
 @keyframes card_animate {
     from {
         background-color: rgb(0, 0, 255);
-
     }
 
     to {
         background-color: rgb(255, 0, 0);
     }
 }
+
+.inst:hover {
+    animation: none;
+    cursor: pointer;
+    transform: scale(1.15);
+    transition: .3s;
+}
+
+.author:hover {
+    animation: none;
+    cursor: pointer;
+    transform: scale(1.15);
+    transition: .3s;
+}
+
+
