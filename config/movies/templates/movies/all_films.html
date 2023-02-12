@@ -29,11 +29,13 @@
             <div class="all_movies">
                 {% for f in films %}
                     
+                <a href="{% url 'movies:m_details' f.slug %}">
                 <div class="am_block">
                     <h1 class="am_title">{{ f.title }}</h1>
                     <img src="{{ f.image.url }}" alt="" class="am_image">
                 </div>
-                
+                </a>
+
                 {% endfor %}
             </div>
         </div>
