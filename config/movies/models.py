@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class Country(models.Model):
     country = models.CharField('Страна', max_length=30)
 
@@ -13,10 +14,15 @@ class Country(models.Model):
 
 
 class Genre(models.Model):
-    genre = models.CharField('Название жанра', max_length=20)
+    title = models.CharField('Название жанра', max_length=20)
+    slug = models.SlugField(max_length=160, unique=True)
+    desc = models.TextField('Описание')
+    after_text = models.TextField('Подробнее о жанре')
+    after_header = models.CharField('Заголовок', max_length=50)
+    after_header_text = models.TextField('Про жанр на этом сайте')
 
     def __str__(self):
-        return self.genre
+        return self.title
 
     class Meta:
         verbose_name = 'Genre'
@@ -31,13 +37,12 @@ class Films(models.Model):
     video = models.FileField('Видео', upload_to='static/app/video')
     wiki = models.TextField('Подробнее о фильме')
     poster = models.ImageField('Превью', upload_to='static/app/img')
-    genre = models.ForeignKey(Genre, on_delete=models.CASCADE)
+    genres = models.ManyToManyField(Genre, verbose_name='Genres')
     country = models.ForeignKey(Country, on_delete=models.CASCADE)
     year_n_duration = models.CharField('Год и продолжительность', max_length=255)
     rating = models.CharField('Рейтинг (IMDb)', max_length=10)
-    likes = models.ManyToManyField(User, related_name='m_likes')
-    dislikes = models.ManyToManyField(User, related_name='m_dislikes')
-
+    likes = models.ManyToManyField(User, related_name='m_likes', blank=True)
+    dislikes = models.ManyToManyField(User, related_name='m_dislikes', blank=True)
 
     def __str__(self):
         return self.title
@@ -61,14 +66,12 @@ class Series(models.Model):
     video = models.FileField('Видео', upload_to='static/app/video')
     wiki = models.TextField('Подробнее о фильме')
     poster = models.ImageField('Превью', upload_to='static/app/img')
-    genre = models.ForeignKey(Genre, on_delete=models.CASCADE)
+    genres = models.ManyToManyField(Genre, verbose_name='Genres')
     country = models.ForeignKey(Country, on_delete=models.CASCADE)
     year_n_duration = models.CharField('Год и продолжительность', max_length=255)
     rating = models.CharField('Рейтинг (IMDb)', max_length=10)
-    likes = models.ManyToManyField(User, related_name='s_likes')
-    dislikes = models.ManyToManyField(User, related_name='s_dislikes')
-
-
+    likes = models.ManyToManyField(User, related_name='s_likes', blank=True)
+    dislikes = models.ManyToManyField(User, related_name='s_dislikes', blank=True)
 
     def __str__(self):
         return self.title
@@ -84,7 +87,6 @@ class Series(models.Model):
         return self.likes.count()
 
 
-
 class Cartoons(models.Model):
     title = models.CharField('Название', max_length=30)
     slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL")
@@ -93,14 +95,12 @@ class Cartoons(models.Model):
     video = models.FileField('Видео', upload_to='static/app/video')
     wiki = models.TextField('Подробнее о фильме')
     poster = models.ImageField('Превью', upload_to='static/app/img')
-    genre = models.ForeignKey(Genre, on_delete=models.CASCADE)
+    genres = models.ManyToManyField(Genre, verbose_name='Genres')
     country = models.ForeignKey(Country, on_delete=models.CASCADE)
     year_n_duration = models.CharField('Год и продолжительность', max_length=255)
     rating = models.CharField('Рейтинг (IMDb)', max_length=10)
-    likes = models.ManyToManyField(User, related_name='c_likes')
-    dislikes = models.ManyToManyField(User, related_name='c_dislikes')
-
-
+    likes = models.ManyToManyField(User, related_name='c_likes', blank=True)
+    dislikes = models.ManyToManyField(User, related_name='c_dislikes', blank=True)
 
     def __str__(self):
         return self.title
@@ -114,12 +114,11 @@ class Cartoons(models.Model):
 
     def total_likes(self):
         return self.likes.count()
-    
 
 
 class FilmsReview(models.Model):
     m_name = models.CharField('Имя', max_length=100)
-    m_email = models.EmailField('Электронная почта')
+    m_email = models.EmailField('Электронная почта', null=True, blank=True)
     m_text = models.TextField('Ваш отзыв')
     movie = models.ForeignKey(Films, verbose_name='Фильм', on_delete=models.CASCADE)
 
@@ -133,7 +132,7 @@ class FilmsReview(models.Model):
 
 class SeriesReview(models.Model):
     s_name = models.CharField('Имя', max_length=100)
-    s_email = models.EmailField('Электронная почта')
+    s_email = models.EmailField('Электронная почта', null=True, blank=True)
     s_text = models.TextField('Ваш отзыв')
     series = models.ForeignKey(Series, verbose_name='Сериал', on_delete=models.CASCADE)
 
@@ -147,7 +146,7 @@ class SeriesReview(models.Model):
 
 class CartoonsReview(models.Model):
     c_name = models.CharField('Имя', max_length=100)
-    c_email = models.EmailField('Электронная почта')
+    c_email = models.EmailField('Электронная почта', null=True, blank=True)
     c_text = models.TextField('Ваш отзыв')
     cartoon = models.ForeignKey(Cartoons, verbose_name='Мультфильм', on_delete=models.CASCADE)
 
@@ -157,16 +156,5 @@ class CartoonsReview(models.Model):
     class Meta:
         verbose_name = "Cartoons Review"
         verbose_name_plural = "Cartoons Reviews"
-
-
-
-
-
-
-
-
-
-
-
 
 # python manage.py migrate --run-syncdb

@@ -23,7 +23,7 @@
                 </div>
                 <div class="flexed_films_header">
                     {% for genre in genres %}
-                    <span class="genre">{{ genre }}</span>
+                    <a href="{% url 'movies:m_genres' genre.slug %}" class="genre">{{ genre }}</a>
                     {% endfor %}
                 </div>
             </div>
@@ -59,12 +59,12 @@
             </div>
             <div class="flexed_series_header">
                 {% for genre in genres %}
-                    <span class="genre">{{ genre }}</span>
+                    <a href="{% url 'movies:s_genres' genre.slug %}" class="genre">{{ genre }}</a>
                 {% endfor %}
             </div>
         </div>
         <div class="series_blocks">
-            {% for s in series %}
+            {% for s in series|slice:'9' %}
             <div class="series_block">
                 <a href="{% url 'movies:s_details' s.slug %}">
                     <h1 class="series_name">{{s.title}}</h1>
@@ -80,7 +80,9 @@
     <div class="container">
         <div class="flexed_cartoons_header">
             <h1 class="cartoons_header">Cartoons<i class="mv_arrow right"></i></h1>
+            <a class="genre_link" href="{% url 'movies:all_cartoons' %}">
             <span class="genre">All Cartoons</span>
+            </a>
         </div>
 
         <div class="slider_2">

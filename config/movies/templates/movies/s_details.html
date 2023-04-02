@@ -34,8 +34,12 @@ class="about_movies">
                     </div>
                     <div class="about_movie">
                         <p class="field">Genre:</p>
-                        <p class="value">{{ series.genre }}</p>
-                    </div>
+                        <p class="value">
+                            {% for genres in series.genres.all %}
+                            <a href="{% url 'movies:s_genres' genres.slug %}" class="value">{{ genres.title }}</a>
+                            {% endfor %}
+                        </p>                    
+                        </div>
                     <div class="about_movie">
                         <p class="field">Country:</p>
                         <p class="value">{{ series.country }}</p>
@@ -89,6 +93,9 @@ class="about_movies">
                 <video src="{{ series.video.url }}" controls poster="{{ series.poster.url }}" width="1180"></video>
             </div>
 
+            
+            {% if user.is_authenticated %}
+                
             <div class="leave_impression">
 
                 
@@ -100,7 +107,7 @@ class="about_movies">
                   <span class="num">{{ series.total_likes }}</span>
                 </button>
     
-                </form>
+            </form>
     
                 <form action="{% url 'movies:s_dislike' series.slug %}" method="post" class="">
                 {% csrf_token %}
@@ -115,6 +122,39 @@ class="about_movies">
 
             </div>
 
+            {% else %}
+            
+            <div class="leave_impression">
+                
+                    
+                    <form>
+                    {% csrf_token %}
+                  
+                    <button class="like_block" onclick="return false">
+                      <i class="fa-regular fa-thumbs-up"></i>
+                      <span class="num">{{ series.total_likes }}</span>
+                    </button>
+        
+                    </form>
+    
+                    <div class="else_text">
+                        <h1 class="cant_leave_t">YOU CANNOT LEAVE AN IMPRESSION IF YOU ARE NOT LOGGED IN</h1>
+                    </div>
+        
+                    <form>
+                    {% csrf_token %}
+                  
+                    <button class="dislike_block" onclick="return false">
+                      <i class="fa-regular fa-thumbs-down"></i>
+                      <span class="num">{{ series.total_dislikes }}</span>
+                    </button>
+        
+                    </form>
+    
+    
+                </div>    
+
+            {% endif %}
 
 
         </div>
@@ -128,6 +168,29 @@ class="about_movies">
                 <hr class="rev_hr">
             </div>
 
+            <section class="similar">
+                <div class="container">
+
+                    <div class="si_content">
+
+                        <h1 class="si_title">RELATED FILMS</h1>
+                        
+                    <div class="si_blocks">
+                            
+                        {% for s in series_|slice:'3' %}
+                        
+                        <a href="{% url 'movies:s_details' s.slug %}">
+                        <div class="si_block">
+                            <h1 class="re-fi_name">{{ s.title }}</h1>
+                            <img src="{{ s.image.url }}" alt="">
+                        </div>
+                        </a>
+                        
+                        {% endfor %}
+                    </div>
+                </div>
+                </div>
+            </section>
 
             <section class="user_reviews">
                 <div class="container">

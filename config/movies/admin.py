@@ -16,11 +16,15 @@ class CartoonsAdmin(admin.ModelAdmin):
     list_display = ['title', 'rating']
     prepopulated_fields = {'slug': ('title',)}
 
+class GenresAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('title',)}
+
+
 
 admin.site.register(Films, FilmsAdmin)
 admin.site.register(Series, SeriesAdmin)
 admin.site.register(Cartoons, CartoonsAdmin)
-admin.site.register(Genre)
+admin.site.register(Genre, GenresAdmin)
 admin.site.register(Country)
 admin.site.register(FilmsReview)
 admin.site.register(SeriesReview)

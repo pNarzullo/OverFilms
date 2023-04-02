@@ -6,12 +6,23 @@
 {% block users %}
 <div class="users">
     <form class="form_1" method="post">
-        <h1 class="head">Sign up</h1>
+        <h1 class="head">Sign Up Form</h1>
         {% csrf_token %}
-        {{ form }}
+        
+        
+        {% for f in form %}
+            
+        <p><label class="form-label" for="{{ f.id_for_label }}">{{ f.label }}: </label>{{ f }}</p>
+        <div class="form-error">{{ f.errors }}</div>
+
+        {% endfor %}
+
+
         <button type="submit" class="u_btn">Confirm</button>
 
-        <p class="content mt-3">
+
+
+        <p class="content">
             Already have an account?
             <span>
                 <a href="{% url 'users:sign_in' %}">Sign in here</a>

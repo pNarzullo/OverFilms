@@ -1,0 +1,61 @@
+{% extends 'movies/layout.html' %}
+
+{% block movies %}
+    
+
+    <section class="all">
+        <div class="container">
+
+            <div class="am_header">
+                <div class="head_n_links">
+                    <h1 class="am"><i class="fa-solid fa-star am_icon"></i>{{ genres }} Genre</h1>
+
+                    <div class="sm_links">
+                        <a href="https://vk.com/" target="_blank" title="VK"><i class="fa-brands fa-vk sm"></i></a>
+                        <a href="https://ok.ru/" target="_blank" title="Odnoklassniki"><i
+                                class="fa-brands fa-square-odnoklassniki sm"></i></a>
+                        <a href="https://twitter.com/?lang=ru" target="_blank" title="Twitter"><i
+                                class="fa-brands fa-square-twitter sm"></i></a>
+                        <a href="https://www.viber.com/ru/" target="_blank" title="Viber"><i
+                                class="fa-solid fa-square-phone sm"></i></a>
+                        <a href="https://telegram.org/" target="_blank" title="Telegram"><i
+                                class="fa-brands fa-telegram sm"></i></a>
+                    </div>
+                </div>
+                <p class="about_am">
+                    {{ genres.desc }}
+                </p>
+            </div>
+
+            <div class="all_movies">
+                {% for c in cartoons %}
+                    
+                
+                <a href="{% url 'movies:c_details' c.slug %}">
+                <div class="am_block">
+                    <h1 class="am_title">{{ c.title }}</h1>
+                    <img src="{{ c.image.url }} " alt="" class="am_image">
+                </div>
+            </a>
+            
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section class="after_all">
+        <p class="after_all_about">
+            {{ genres.after_text }}
+        </p>
+
+        <h1 class="after_all_header">
+            {{ genres.after_header }}
+        </h1>
+
+        <p class="after_all_about">
+            {{ genres.after_header_text }}
+        </p>
+    </section>
+
+
+{% endblock %}

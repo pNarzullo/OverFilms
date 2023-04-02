@@ -9,10 +9,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    
     <meta name="color-scheme" content="">
     <meta name="theme-color" content="">
-    
+
     <link rel="shortcut icon" href="{% static 'app/img/favicon.ico' %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'app/css/users.css' %}">
     <link rel="stylesheet" href="{% static 'app/css/all_movies.css' %}">
@@ -24,7 +24,6 @@
 </head>
 
 <body>
-
     <script>
         (function () {
             var preferDark = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
@@ -86,18 +85,22 @@
                             <li>
                                 <div class="dropdown">
 
-                                    <a href="{% url 'movies:all_films' %}">
-                                    <button class="dropbtn nav_c accordion_header">
-                                        <i class="fa-solid fa-video icon"></i>Films<i class="ad_i arrow down"></i>
-                                    </button>
+                                    <a href="{% url 'movies:all_films' %}" class="nav_c-link">
+                                        <button class="dropbtn nav_c accordion_header">
+                                            <i class="fa-solid fa-video icon"></i>Films
+                                        </button>
                                     </a>
+                                    <i class="fa-solid fa-circle-arrow-down accordion_header arrow_down"></i>
 
                                     <div class="dropdown-content accordion_body">
-                                        {% for genre in genres %}
 
-                                        <a class="dd_l" href="#">{{ genre }}</a>
-
+                                        {% for genre in genres.all %}
+                                            
+                                        <a class="dd_l" href="{% url 'movies:m_genres' genre.slug %}"> {{ genre.title }} </a>
+                                        
                                         {% endfor %}
+                                        
+
                                     </div>
                                 </div>
                             </li>
@@ -105,18 +108,19 @@
                             <li>
                                 <div class="dropdown">
 
-                                    <a href="{% url 'movies:all_series' %}">
-                                    <button class="dropbtn nav_c accordion_header">
-                                        <i class="fa-solid fa-tv icon"></i>Series<i class="ad_i arrow down"></i>
-                                    </button>
+                                    <a href="{% url 'movies:all_series' %}" class="nav_c-link">
+                                        <button class="dropbtn nav_c accordion_header">
+                                            <i class="fa-solid fa-tv icon"></i>Series
+                                        </button>
                                     </a>
+                                    <i class="fa-solid fa-circle-arrow-down accordion_header arrow_down"></i>
 
                                     <div class="dropdown-content accordion_body">
-                                        {% for genre in genres %}
 
-                                        <a class="dd_l" href="#">{{ genre }}</a>
-
+                                        {% for genre in genres.all %}
+                                        <a class="dd_l" href="{% url 'movies:s_genres' genre.slug %}">{{ genre.title }}</a>
                                         {% endfor %}
+
                                     </div>
                                 </div>
                             </li>
@@ -124,8 +128,9 @@
                             <li>
                                 <div class="dropdown">
 
-                                    <a href="{% url 'movies:all_cartoons' %}">
-                                    <button class="dropbtn nav_c"><i class="fa-solid fa-cubes icon"></i>Cartoons</button>
+                                    <a href="{% url 'movies:all_cartoons' %}" class="nav_c-link">
+                                        <button class="dropbtn nav_c"><i
+                                                class="fa-solid fa-cubes icon"></i>Cartoons</button>
                                     </a>
 
                                 </div>
@@ -135,10 +140,10 @@
 
 
                     <div class="navbar_end">
-                        <form action="{% url 'movies:base' %}" class="nb_end search">
-                            <input type="search" placeholder="Search" class="s_input" name="search">
-                            <button type="submit" class="s_btn"><i
-                                    class="fa-solid fa-magnifying-glass search_i"></i></button>
+                        <form action="{% url 'movies:base' %}" method="get" class="nb_end search">
+                            <input type="search" type="text" placeholder="Search" class="s_input" name="search">
+                            <button type="submit" class="s_btn"><i class="fa-solid fa-magnifying-glass search_i"></i>
+                        </button>
                         </form>
 
 
@@ -153,20 +158,31 @@
 
                                 <div class="user">
                                     {% if user.is_authenticated %}
-                                    <a>
-                                        <p class="user"><i class="fa-solid fa-user-tie u_icons"></i>{{ user }}</p>
+                                    <a class="user">
+                                        <p class="user_n"><i class="fa-solid fa-user-tie u_icons"></i>{{ user }}</p>
                                     </a>
                                     {% endif %}
                                 </div>
-                                <a href="{% url 'users:sign_in' %}">
-                                    <li><i class="fa-sharp fa-solid fa-right-to-bracket u_icons"></i>Sign In</li>
-                                </a>
-                                <a href="{% url 'users:sign_up' %}">
-                                    <li><i class="fa-solid fa-plus u_icons"></i>Sign Up</li>
-                                </a>
+
+
+                                {% if user.is_authenticated %}
+
                                 <a href="{% url 'users:sign_out' %}">
-                                    <li><i class="fa-solid fa-right-from-bracket u_icons"></i>Sign Out</li>
+                                    <li class="user-btns"><i class="fa-solid fa-right-from-bracket u_icons"></i>Sign Out
+                                    </li>
                                 </a>
+                                {% else %}
+
+                                <a href="{% url 'users:sign_in' %}">
+                                <li class="user-btns"><i
+                                    class="fa-sharp fa-solid fa-right-to-bracket u_icons"></i>Sign In</li>
+                                </a>
+                                
+                                <a href="{% url 'users:sign_up' %}">
+                                    <li class="user-btns"><i class="fa-solid fa-plus u_icons"></i>Sign Up</li>
+                                </a>
+
+                                {% endif %}
                             </div>
                         </div>
 
@@ -174,6 +190,14 @@
 
 
                 </div>
+
+                <div class="theme">
+                    <span class="theme_switcher light">light</span> <span class="theme_switcher darko">dark</span>
+                    <span class="switcher_theme">mode</span>
+                    <i id="switcher" class="fa-regular fa-circle-dot tc_icon dark"></i>
+                </div>
+
+
             </div>
         </header>
 
@@ -211,11 +235,6 @@
             </div>
         </footer>
 
-        <div class="theme">
-            <span class="theme_switcher light">light</span> <span class="theme_switcher darko">dark</span>    
-            <span class="switcher_theme">mode</span>    
-            <i id="switcher" class="fa-regular fa-circle-dot tc_icon dark"></i>
-        </div>
 
 
 

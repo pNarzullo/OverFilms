@@ -20,3 +20,5 @@ class CartoonsReviewForm(forms.ModelForm):
     class Meta:
         model = CartoonsReview
         fields = ('c_name', 'c_text')
+
+

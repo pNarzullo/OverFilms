@@ -20,4 +20,7 @@ urlpatterns = [
     path('all_films/', views.all_films, name="all_films"),
     path('all_series/', views.all_series, name="all_series"),
     path('all_cartoons/', views.all_cartoons, name="all_cartoons"),
+    path('m_genres/<slug:g_slug>', views.m_genres, name='m_genres'),
+    path('s_genres/<slug:g_slug>', views.s_genres, name='s_genres'),
+    path('c_genres/<slug:g_slug>', views.c_genres, name='c_genres'),
 ]
